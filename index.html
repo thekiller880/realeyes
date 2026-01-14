@@ -1,0 +1,453 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROPAGANDA IN OUR SCHOOLS</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&display=swap');
+
+```
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: 'Oswald', sans-serif;
+background: #000;
+color: #fff;
+overflow-x: hidden;
+}
+
+.grain {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+pointer-events: none;
+z-index: 1000;
+opacity: 0.4;
+}
+
+.hero {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+background: linear-gradient(180deg, #1a0000 0%, #000 100%);
+border-bottom: 5px solid #fff;
+}
+
+.title {
+font-family: 'Bebas Neue', cursive;
+font-size: clamp(3rem, 10vw, 8rem);
+text-align: center;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+background: linear-gradient(45deg, #fff, #ff0000);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+animation: glitch 3s infinite;
+margin: 20px;
+text-shadow: 0 0 30px rgba(255,0,0,0.5);
+}
+
+@keyframes glitch {
+0%, 100% { transform: translate(0); }
+20% { transform: translate(-2px, 2px); }
+40% { transform: translate(-2px, -2px); }
+60% { transform: translate(2px, 2px); }
+80% { transform: translate(2px, -2px); }
+}
+
+.subtitle {
+font-size: clamp(1.2rem, 3vw, 2rem);
+text-align: center;
+margin: 20px;
+letter-spacing: 0.2em;
+opacity: 0.9;
+}
+
+.scroll-indicator {
+position: absolute;
+bottom: 30px;
+animation: bounce 2s infinite;
+font-size: 3rem;
+opacity: 0.6;
+}
+
+@keyframes bounce {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-20px); }
+}
+
+.section {
+min-height: 100vh;
+padding: 60px 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+border-bottom: 3px solid #333;
+}
+
+.section-dark {
+background: #0a0a0a;
+}
+
+.section-red {
+background: linear-gradient(135deg, #1a0000 0%, #0a0000 100%);
+}
+
+.elephant-container {
+position: relative;
+width: 300px;
+height: 300px;
+margin: 40px auto;
+}
+
+.elephant {
+font-size: 200px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+filter: drop-shadow(0 0 20px rgba(255,0,0,0.5));
+animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+25% { transform: translate(-48%, -50%) rotate(-2deg); }
+75% { transform: translate(-52%, -50%) rotate(2deg); }
+}
+
+.lightning {
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+pointer-events: none;
+}
+
+.bolt {
+position: absolute;
+width: 4px;
+background: linear-gradient(to bottom, #fff, #ff0000, transparent);
+animation: strike 2s infinite;
+opacity: 0;
+}
+
+.bolt:nth-child(1) { left: 20%; height: 150px; animation-delay: 0s; }
+.bolt:nth-child(2) { left: 50%; height: 180px; animation-delay: 0.3s; }
+.bolt:nth-child(3) { left: 80%; height: 160px; animation-delay: 0.6s; }
+
+@keyframes strike {
+0%, 90%, 100% { opacity: 0; }
+92%, 94%, 96% { opacity: 1; }
+}
+
+.content-box {
+max-width: 900px;
+margin: 40px auto;
+padding: 40px;
+background: rgba(255,255,255,0.05);
+border: 2px solid #fff;
+border-left: 10px solid #ff0000;
+position: relative;
+}
+
+.content-box h2 {
+font-family: 'Bebas Neue', cursive;
+font-size: clamp(2rem, 5vw, 4rem);
+margin-bottom: 30px;
+letter-spacing: 0.1em;
+color: #ff0000;
+text-shadow: 0 0 20px rgba(255,0,0,0.5);
+}
+
+.content-box p {
+font-size: clamp(1rem, 2vw, 1.3rem);
+line-height: 1.8;
+margin-bottom: 20px;
+}
+
+.fact-list {
+list-style: none;
+margin: 30px 0;
+}
+
+.fact-list li {
+padding: 15px;
+margin: 15px 0;
+background: rgba(255,0,0,0.1);
+border-left: 5px solid #ff0000;
+font-size: clamp(0.9rem, 2vw, 1.2rem);
+transition: all 0.3s;
+}
+
+.fact-list li:hover {
+background: rgba(255,0,0,0.2);
+transform: translateX(10px);
+}
+
+.comparison {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+max-width: 1200px;
+margin: 40px auto;
+padding: 20px;
+}
+
+.card {
+background: rgba(0,0,0,0.8);
+border: 3px solid #fff;
+padding: 30px;
+position: relative;
+overflow: hidden;
+transition: all 0.3s;
+}
+
+.card:hover {
+transform: scale(1.05);
+border-color: #ff0000;
+box-shadow: 0 0 40px rgba(255,0,0,0.5);
+}
+
+.card h3 {
+font-family: 'Bebas Neue', cursive;
+font-size: 2.5rem;
+margin-bottom: 20px;
+letter-spacing: 0.1em;
+}
+
+.card-winner {
+border-color: #00ff00;
+}
+
+.card-winner h3 {
+color: #00ff00;
+}
+
+.card-loser {
+border-color: #ff0000;
+}
+
+.card-loser h3 {
+color: #ff0000;
+}
+
+.stat {
+padding: 10px 0;
+border-bottom: 1px solid rgba(255,255,255,0.1);
+font-size: 1.1rem;
+}
+
+.stat strong {
+color: #ff0000;
+}
+
+.money-rain {
+position: absolute;
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+pointer-events: none;
+overflow: hidden;
+}
+
+.dollar {
+position: absolute;
+font-size: 30px;
+opacity: 0.3;
+animation: fall linear infinite;
+}
+
+@keyframes fall {
+to {
+transform: translateY(100vh) rotate(360deg);
+}
+}
+
+.truth-bomb {
+background: #ff0000;
+color: #000;
+padding: 40px;
+margin: 40px auto;
+max-width: 800px;
+font-size: clamp(1.2rem, 3vw, 2rem);
+font-weight: 700;
+text-align: center;
+border: 5px solid #fff;
+box-shadow: 0 0 50px rgba(255,0,0,0.8);
+animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.02); }
+}
+
+footer {
+background: #000;
+padding: 40px 20px;
+text-align: center;
+border-top: 5px solid #ff0000;
+}
+
+footer p {
+font-size: clamp(1rem, 2vw, 1.5rem);
+margin: 10px 0;
+letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+.comparison {
+grid-template-columns: 1fr;
+}
+}
+</style>
+```
+
+</head>
+<body>
+<div class="grain"></div>
+
+```
+<section class="hero">
+<h1 class="title">PROPAGANDA<br>IN OUR SCHOOLS</h1>
+<p class="subtitle">MYTHOLOGY VS. REALITY</p>
+<div class="scroll-indicator">↓</div>
+</section>
+
+<section class="section section-red">
+<div class="elephant-container">
+<div class="elephant">🐘</div>
+<div class="lightning">
+<div class="bolt"></div>
+<div class="bolt"></div>
+<div class="bolt"></div>
+</div>
+</div>
+
+<div class="content-box">
+<h2>THE EDISON LIE</h2>
+<p>They teach your kids that Thomas Edison was a genius inventor who brought light to the world. <strong>BULLSHIT.</strong></p>
+
+<p>Edison didn't invent the light bulb. He stole it. He had money, patents, and an army of lawyers. What he DID invent was corporate propaganda.</p>
+
+<ul class="fact-list">
+<li>🔥 Edison publicly ELECTROCUTED elephants, dogs, and horses to discredit Nikola Tesla's superior AC power system</li>
+<li>🔥 He stole credit from Lewis Latimer, the Black inventor who created the carbon filament that actually made light bulbs work</li>
+<li>🔥 He ran a factory of inventors but took sole credit for THEIR work</li>
+<li>🔥 He used patent warfare to destroy competitors who had better technology</li>
+<li>🔥 His greed and ego killed animals across America just to protect his profits</li>
+</ul>
+
+<p style="margin-top: 30px; font-size: 1.5rem; color: #ff0000; font-weight: 700;">This is who we tell children to worship. A man who murdered animals to protect his monopoly.</p>
+</div>
+</section>
+
+<section class="section section-dark">
+<div class="money-rain" id="moneyRain"></div>
+
+<div class="content-box">
+<h2>BUSINESS "GENIUS"</h2>
+<p>They sell you the same lie today. They tell you to worship billionaires. To idolize "business genius." Let's look at the FACTS.</p>
+</div>
+
+<div class="comparison">
+<div class="card card-winner">
+<h3>WARREN BUFFETT</h3>
+<div class="stat"><strong>Started with:</strong> $100,000</div>
+<div class="stat"><strong>Built it to:</strong> $120 BILLION</div>
+<div class="stat"><strong>How:</strong> Actual business skill and long-term strategy</div>
+<div class="stat"><strong>Bankruptcies:</strong> ZERO</div>
+<div class="stat"><strong>Track record:</strong> 60+ years of consistent 20% returns</div>
+<div class="stat"><strong>Charity:</strong> Gave away $50+ billion</div>
+</div>
+
+<div class="card card-loser">
+<h3>DONALD TRUMP</h3>
+<div class="stat"><strong>Started with:</strong> $413 MILLION inheritance</div>
+<div class="stat"><strong>Built it to:</strong> $2-4 billion (disputed)</div>
+<div class="stat"><strong>How:</strong> Branding and reality TV</div>
+<div class="stat"><strong>Bankruptcies:</strong> SIX</div>
+<div class="stat"><strong>Track record:</strong> Would've made MORE money in index funds</div>
+<div class="stat"><strong>Notable failures:</strong> Trump Steaks, Trump University (fraud settlement), Trump Casinos, Trump Airlines</div>
+</div>
+</div>
+
+<div class="truth-bomb">
+ONE INHERITED HUNDREDS OF MILLIONS AND SQUANDERED IT.<br>
+ONE BUILT BILLIONS FROM THOUSANDS THROUGH ACTUAL SKILL.<br><br>
+GUESS WHICH ONE THE MEDIA CALLS A "BUSINESS GENIUS"?
+</div>
+</section>
+
+<section class="section section-red">
+<div class="content-box">
+<h2>STOP WORSHIPPING GREED</h2>
+<p>Edison electrocuted animals to protect his profits. Modern "geniuses" bankrupt companies, scam students, and inherit wealth while the media worships them.</p>
+
+<p style="margin-top: 30px; font-size: 1.4rem;">Your children deserve the TRUTH. Not propaganda. Not mythology. Not hero worship of greedy men who destroy everything in their path.</p>
+
+<ul class="fact-list">
+<li>💡 Teach them about collaboration, not "lone genius" myths</li>
+<li>💡 Show them the difference between inheritance and innovation</li>
+<li>💡 Let them question why schools glorify monopolists and frauds</li>
+<li>💡 Give them the tools to recognize propaganda when they see it</li>
+</ul>
+</div>
+</section>
+
+<footer>
+<p>QUESTION EVERYTHING.</p>
+<p>VERIFY FACTS.</p>
+<p>TEACH TRUTH.</p>
+<p style="margin-top: 30px; opacity: 0.7;">Share this. Our kids deserve better than lies.</p>
+
+<div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #333;">
+<p style="font-size: 1.2rem; margin-bottom: 15px;">RESEARCH DEPARTMENT</p>
+<p style="font-size: 1.5rem; letter-spacing: 0.05em; margin: 10px 0;">+1 (267) 281-5131</p>
+<p style="font-size: 1.5rem; letter-spacing: 0.05em; margin: 10px 0;">1 (844) 937-3262</p>
+</div>
+</footer>
+
+<script>
+// Money rain effect
+const moneyRain = document.getElementById('moneyRain');
+for (let i = 0; i < 15; i++) {
+const dollar = document.createElement('div');
+dollar.className = 'dollar';
+dollar.textContent = '💰';
+dollar.style.left = Math.random() * 100 + '%';
+dollar.style.animationDuration = (Math.random() * 3 + 4) + 's';
+dollar.style.animationDelay = Math.random() * 5 + 's';
+moneyRain.appendChild(dollar);
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+document.querySelector(this.getAttribute('href')).scrollIntoView({
+behavior: 'smooth'
+});
+});
+});
+</script>
+```
+
+</body>
+</html>
