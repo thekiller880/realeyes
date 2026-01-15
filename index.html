@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,15 +8,14 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&display=swap');
 
-
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+- {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
 
 body {
-font-family: 'Oswald', sans-serif;
+font-family: ‘Oswald’, sans-serif;
 background: #000;
 color: #fff;
 overflow-x: hidden;
@@ -26,7 +27,7 @@ top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+background-image: url(‘data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100%" height="100%" opacity="0.05"/></svg>’);
 pointer-events: none;
 z-index: 1000;
 opacity: 0.4;
@@ -44,7 +45,7 @@ border-bottom: 5px solid #fff;
 }
 
 .title {
-font-family: 'Bebas Neue', cursive;
+font-family: ‘Bebas Neue’, cursive;
 font-size: clamp(3rem, 10vw, 8rem);
 text-align: center;
 letter-spacing: 0.1em;
@@ -109,7 +110,7 @@ background: linear-gradient(135deg, #1a0000 0%, #0a0000 100%);
 .elephant-container {
 position: relative;
 width: 300px;
-height: 300px;
+height: 400px;
 margin: 40px auto;
 }
 
@@ -121,6 +122,25 @@ left: 50%;
 transform: translate(-50%, -50%);
 filter: drop-shadow(0 0 20px rgba(255,0,0,0.5));
 animation: shake 0.5s infinite;
+}
+
+.rip-topsy {
+position: absolute;
+top: 10px;
+left: 50%;
+transform: translateX(-50%);
+font-family: ‘Bebas Neue’, cursive;
+font-size: 2rem;
+color: #fff;
+text-shadow: 0 0 10px rgba(255,0,0,0.8), 0 0 20px rgba(255,0,0,0.6);
+letter-spacing: 0.2em;
+animation: flicker 2s infinite;
+z-index: 10;
+}
+
+@keyframes flicker {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.7; }
 }
 
 @keyframes shake {
@@ -140,19 +160,23 @@ pointer-events: none;
 
 .bolt {
 position: absolute;
-width: 4px;
-background: linear-gradient(to bottom, #fff, #ff0000, transparent);
-animation: strike 2s infinite;
+width: 3px;
+background: linear-gradient(to bottom, #fff, #00d4ff, #ff0000);
+animation: strike 1.5s infinite;
 opacity: 0;
+box-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff;
 }
 
-.bolt:nth-child(1) { left: 20%; height: 150px; animation-delay: 0s; }
-.bolt:nth-child(2) { left: 50%; height: 180px; animation-delay: 0.3s; }
-.bolt:nth-child(3) { left: 80%; height: 160px; animation-delay: 0.6s; }
+.bolt:nth-child(1) { left: 25%; height: 180px; animation-delay: 0s; top: 30px; }
+.bolt:nth-child(2) { left: 50%; height: 200px; animation-delay: 0.4s; top: 20px; }
+.bolt:nth-child(3) { left: 75%; height: 190px; animation-delay: 0.8s; top: 25px; }
+.bolt:nth-child(4) { left: 35%; height: 170px; animation-delay: 1.2s; top: 35px; }
+.bolt:nth-child(5) { left: 65%; height: 185px; animation-delay: 0.2s; top: 28px; }
 
 @keyframes strike {
 0%, 90%, 100% { opacity: 0; }
-92%, 94%, 96% { opacity: 1; }
+91%, 93%, 95%, 97% { opacity: 1; }
+92%, 94%, 96% { opacity: 0.3; }
 }
 
 .content-box {
@@ -166,7 +190,7 @@ position: relative;
 }
 
 .content-box h2 {
-font-family: 'Bebas Neue', cursive;
+font-family: ‘Bebas Neue’, cursive;
 font-size: clamp(2rem, 5vw, 4rem);
 margin-bottom: 30px;
 letter-spacing: 0.1em;
@@ -224,7 +248,7 @@ box-shadow: 0 0 40px rgba(255,0,0,0.5);
 }
 
 .card h3 {
-font-family: 'Bebas Neue', cursive;
+font-family: ‘Bebas Neue’, cursive;
 font-size: 2.5rem;
 margin-bottom: 20px;
 letter-spacing: 0.1em;
@@ -298,6 +322,172 @@ animation: pulse 2s infinite;
 50% { transform: scale(1.02); }
 }
 
+/* Edison Deep Dive Styles */
+.edison-deep-dive {
+background: linear-gradient(135deg, #0a0000 0%, #1a0000 100%);
+padding: 80px 20px;
+}
+
+.case-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 25px;
+max-width: 1400px;
+margin: 40px auto;
+}
+
+.case-card {
+background: rgba(0,0,0,0.6);
+border: 2px solid #666;
+padding: 25px;
+cursor: pointer;
+transition: all 0.3s;
+position: relative;
+overflow: hidden;
+}
+
+.case-card:hover {
+border-color: #ff0000;
+transform: translateY(-5px);
+box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+}
+
+.case-card::before {
+content: ‘’;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 5px;
+background: linear-gradient(90deg, #ff0000, #ff6600);
+}
+
+.case-icon {
+font-size: 3rem;
+margin-bottom: 15px;
+display: block;
+}
+
+.case-card h3 {
+font-family: ‘Bebas Neue’, cursive;
+font-size: 1.8rem;
+margin-bottom: 10px;
+color: #fff;
+}
+
+.case-victim {
+color: #ff6666;
+font-size: 0.9rem;
+margin-bottom: 5px;
+}
+
+.case-dates {
+color: #999;
+font-size: 0.85rem;
+}
+
+.case-details {
+max-width: 1200px;
+margin: 40px auto;
+background: rgba(0,0,0,0.8);
+border: 3px solid #ff0000;
+padding: 40px;
+display: none;
+}
+
+.case-details.active {
+display: block;
+animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+from {
+opacity: 0;
+transform: translateY(-20px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+.tactics-list {
+list-style: none;
+margin: 25px 0;
+}
+
+.tactics-list li {
+padding: 12px 15px;
+margin: 10px 0;
+background: rgba(255,0,0,0.15);
+border-left: 4px solid #ff0000;
+font-size: 1.05rem;
+}
+
+.reality-box {
+background: rgba(255,200,0,0.1);
+border: 2px solid #ffcc00;
+padding: 20px;
+margin: 25px 0;
+}
+
+.lost-world-box {
+background: rgba(0,100,255,0.1);
+border: 2px solid #0066ff;
+padding: 25px;
+margin: 25px 0;
+}
+
+.lost-world-box h4 {
+color: #00ccff;
+font-size: 1.5rem;
+margin-bottom: 15px;
+}
+
+.alt-timeline-list {
+list-style: none;
+margin: 20px 0;
+}
+
+.alt-timeline-list li {
+padding: 10px 15px;
+margin: 8px 0;
+background: rgba(0,100,255,0.1);
+border-left: 4px solid #00ccff;
+}
+
+.close-btn {
+background: #ff0000;
+color: #fff;
+border: none;
+padding: 12px 30px;
+font-family: ‘Bebas Neue’, cursive;
+font-size: 1.3rem;
+cursor: pointer;
+margin-top: 20px;
+transition: all 0.3s;
+}
+
+.close-btn:hover {
+background: #cc0000;
+transform: scale(1.05);
+}
+
+.pattern-box {
+background: rgba(255,0,0,0.2);
+border: 3px solid #ff0000;
+padding: 30px;
+max-width: 1000px;
+margin: 40px auto;
+}
+
+.pattern-box h3 {
+font-family: ‘Bebas Neue’, cursive;
+font-size: 2.5rem;
+color: #ff0000;
+margin-bottom: 20px;
+}
+
 footer {
 background: #000;
 padding: 40px 20px;
@@ -315,15 +505,16 @@ letter-spacing: 0.1em;
 .comparison {
 grid-template-columns: 1fr;
 }
+.case-grid {
+grid-template-columns: 1fr;
+}
 }
 </style>
-```
 
 </head>
 <body>
 <div class="grain"></div>
 
-```
 <section class="hero">
 <h1 class="title">PROPAGANDA<br>IN OUR SCHOOLS</h1>
 <p class="subtitle">MYTHOLOGY VS. REALITY</p>
@@ -332,8 +523,11 @@ grid-template-columns: 1fr;
 
 <section class="section section-red">
 <div class="elephant-container">
+<div class="rip-topsy">REST IN PEACE TOPSY</div>
 <div class="elephant">🐘</div>
 <div class="lightning">
+<div class="bolt"></div>
+<div class="bolt"></div>
 <div class="bolt"></div>
 <div class="bolt"></div>
 <div class="bolt"></div>
@@ -347,7 +541,7 @@ grid-template-columns: 1fr;
 <p>Edison didn't invent the light bulb. He stole it. He had money, patents, and an army of lawyers. What he DID invent was corporate propaganda.</p>
 
 <ul class="fact-list">
-<li>🔥 Edison publicly ELECTROCUTED elephants, rip Topsy:(dogs44, and horses2 calves) to discredit Nikola Tesla's superior AC power system</li>
+<li>🔥 Edison publicly ELECTROCUTED elephants, rip Topsy:(dogs, and horses, calves) to discredit Nikola Tesla's superior AC power system</li>
 <li>🔥 He stole credit from Lewis Latimer, the Black inventor who created the carbon filament that actually made light bulbs work</li>
 <li>🔥 He ran a factory of inventors but took sole credit for THEIR work</li>
 <li>🔥 He used patent warfare to destroy competitors who had better technology</li>
@@ -385,6 +579,12 @@ grid-template-columns: 1fr;
 <div class="stat"><strong>Bankruptcies:</strong> SIX</div>
 <div class="stat"><strong>Track record:</strong> Would've made MORE money in index funds</div>
 <div class="stat"><strong>Notable failures:</strong> Trump Steaks, Trump University (fraud settlement), Trump Casinos, Trump Airlines</div>
+<div class="stat" style="border-top: 3px solid #ff0000; margin-top: 15px; padding-top: 15px;">
+<strong>1990 Casino Bailout:</strong> When Trump Castle couldn't make an $18.4M payment, daddy Fred sent his lawyer with $3.5 MILLION in cash to buy casino chips and walk out without gambling. <span style="color: #ffcc00;">New Jersey Gaming Enforcement ruled it ILLEGAL.</span> Trump paid a joke $30k fine and kept the money.
+</div>
+<div class="stat" style="font-size: 1.3rem; color: #ff6666; font-weight: 700; font-style: italic; border: none; padding: 20px 10px;">
+"Debt always needed daddy to bail him out. But daddy's dead now. Who's gonna bail you out?"
+</div>
 </div>
 </div>
 
@@ -392,6 +592,41 @@ grid-template-columns: 1fr;
 ONE INHERITED HUNDREDS OF MILLIONS AND SQUANDERED IT.<br>
 ONE BUILT BILLIONS FROM THOUSANDS THROUGH ACTUAL SKILL.<br><br>
 GUESS WHICH ONE THE MEDIA CALLS A "BUSINESS GENIUS"?
+</div>
+</section>
+
+<!-- NEW EDISON DEEP DIVE SECTION -->
+
+<section class="edison-deep-dive">
+<div class="content-box">
+<h2>EDISON'S PROPAGANDA EMPIRE: THE FULL STORY</h2>
+<p style="font-size: 1.4rem; margin-bottom: 30px;">The elephant was just the beginning. Edison didn't just steal credit and murder animals — he created a blueprint for corporate manipulation that corporations still use today. Here's EVERY major case where Edison suppressed better technology, destroyed competitors, and rewrote history.</p>
+</div>
+
+<div class="case-grid" id="caseGrid">
+<!-- Cases will be populated by JavaScript -->
+</div>
+
+<div id="caseDetailsContainer"></div>
+
+<div class="pattern-box">
+<h3>THE EDISON PLAYBOOK (STILL USED TODAY)</h3>
+<p style="font-size: 1.2rem; margin-bottom: 20px;">Edison didn't just delay specific technologies. He created the modern corporate playbook for killing innovation:</p>
+<ul class="fact-list">
+<li>🔥 <strong>FEAR-BASED PROPAGANDA:</strong> AC is deadly! Look at these dead animals! (Today: "This new tech is dangerous/unproven!")</li>
+<li>🔥 <strong>PATENT WARFARE:</strong> Sue competitors into bankruptcy even when your patents are bullshit (Today: patent trolls, IP litigation abuse)</li>
+<li>🔥 <strong>MONOPOLY CONTROL:</strong> Form trusts to control entire industries (Today: Big Tech monopolies)</li>
+<li>🔥 <strong>CREDIT THEFT:</strong> Take others' work, slap your name on it, erase them from history (Today: corporate R&D labs that credit the CEO)</li>
+<li>🔥 <strong>MARKETING OVER MERIT:</strong> Best tech doesn't win — best PR does (Today: VC-backed hype over actual innovation)</li>
+</ul>
+<p style="margin-top: 25px; font-size: 1.3rem; color: #ffcc00; font-weight: 700;">This is Edison's real legacy. Not light bulbs. Not innovation. A system where ruthless business tactics trump superior technology.</p>
+</div>
+
+<div class="truth-bomb" style="margin-top: 50px;">
+WE COULD BE LIVING IN TESLA'S WIRELESS POWER WORLD.<br>
+WE COULD HAVE HAD CINEMA AS AN ART FORM 10 YEARS EARLIER.<br>
+WE COULD HAVE ELECTRIFIED RURAL AMERICA IN THE 1900s.<br><br>
+BUT EDISON'S GREED KILLED IT ALL.
 </div>
 </section>
 
@@ -425,29 +660,121 @@ GUESS WHICH ONE THE MEDIA CALLS A "BUSINESS GENIUS"?
 </footer>
 
 <script>
-// Money rain effect
-const moneyRain = document.getElementById('moneyRain');
-for (let i = 0; i < 15; i++) {
-const dollar = document.createElement('div');
-dollar.className = 'dollar';
-dollar.textContent = '💰';
-dollar.style.left = Math.random() * 100 + '%';
-dollar.style.animationDuration = (Math.random() * 3 + 4) + 's';
-dollar.style.animationDelay = Math.random() * 5 + 's';
-moneyRain.appendChild(dollar);
-}
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function (e) {
-e.preventDefault();
-document.querySelector(this.getAttribute('href')).scrollIntoView({
-behavior: 'smooth'
-});
-});
-});
-</script>
-```
-
-</body>
-</html>
+// Case data
+const cases = [
+{
+id: 'ac',
+title: 'AC POWER WAR',
+icon: '⚡',
+victim: 'Tesla & Westinghouse',
+dates: '1888-1893',
+tactics: [
+'Public electrocution of animals (dogs, cats, horses, calves)',
+'Electrocution of elephant "Topsy" in 1903 (filmed for propaganda)',
+'Secretly paid Harold P. Brown to design AC-powered electric chair',
+'Coined term "Westinghoused" to mean death by electrocution',
+'Published 84-page pamphlet warning of AC dangers',
+'Pushed New York to adopt AC for death penalty to associate it with death'
+],
+reality: 'AC was technically SUPERIOR for long-distance transmission. Edison\'s DC needed power stations every mile with thick expensive copper wires. AC could transmit hundreds of miles efficiently with thin wires.',
+impact: 'Delayed widespread electrification by 10+ years',
+lostWorld: [
+'Rural America could have been electrified in the 1900s instead of 1920s-30s',
+'Lower infrastructure costs from the start — cheaper electricity for everyone',
+'Faster industrial development in remote areas',
+'Tesla\'s wireless power transmission research might have received serious funding',
+'More distributed power generation (Tesla\'s vision) vs centralized monopoly control'
+]
+},
+{
+id: 'film',
+title: 'MOTION PICTURES',
+icon: '🎬',
+victim: 'Louis Le Prince',
+dates: '1888-1890',
+tactics: [
+'Le Prince filmed moving pictures in 1888 — 7 YEARS before the Lumière brothers',
+'September 1890: Le Prince boards train in Dijon to Paris to patent his projector',
+'Le Prince NEVER ARRIVES. Vanishes completely. No body ever found. All luggage gone.',
+'1898: Edison sues claiming HE invented motion pictures',
+'Le Prince\'s son Adolphe testifies against Edison, proves Le Prince invented it first',
+'1901: Adolphe found DEAD on Fire Island, NY — ruled "suicide" by gunshot to forehead',
+'Alleged Edison diary entry: "Eric called me from Dijon. It has been done. Prince is no more."'
+],
+reality: 'Le Prince\'s 1888 "Roundhay Garden Scene" predates Edison\'s kinetoscope by years. His widow believed Edison had him murdered. His son who testified against Edison mysteriously "suicided" years later.',
+impact: 'Cinema development set back 5-7 years, entire artistic direction changed',
+lostWorld: [
+'Le Prince envisioned "people\'s theaters" and film as a way to "connect people of the world" — not profit machines',
+'Cinema might have developed as ARTISTIC and EDUCATIONAL medium FIRST instead of novelty entertainment',
+'Earlier focus on projection (theaters) rather than Edison\'s peephole Kinetoscope',
+'Documentary tradition could have started a decade earlier',
+'International collaboration in film rather than Edison\'s American monopoly',
+'No Edison Trust trying to control and tax ALL film production'
+]
+},
+{
+id: 'lightbulb',
+title: 'THE LIGHT BULB',
+icon: '💡',
+victim: 'Joseph Swan & Lewis Latimer',
+dates: '1878-1880',
+tactics: [
+'British inventor Joseph Swan demonstrated working light bulb in 1879',
+'Swan had been experimenting since the 1850s',
+'Black inventor Lewis Latimer created the carbon filament that actually made bulbs practical',
+'Edison filed patents and marketed aggressively, claiming sole invention',
+'Eventually FORCED to partner with Swan after losing patent cases',
+'History credits Edison, not Swan or Latimer',
+'Classic pattern: take existing invention, improve slightly, claim FULL credit'
+],
+reality: 'Swan demonstrated his bulb FIRST. Latimer made it work for real. Edison made it commercially practical but didn\'t invent the concept. Then erased both men from history.',
+impact: 'Not much technical delay — this was pure credit theft',
+lostWorld: [
+'Recognition that innovation is ITERATIVE, not "lone genius"',
+'Swan and Latimer might be household names today',
+'Different business models — Swan was scientist first, businessman second',
+'Less monopolistic patent culture',
+'Earlier understanding that breakthrough discovery ≠ commercialization'
+]
+},
+{
+id: 'phonograph',
+title: 'SOUND RECORDING',
+icon: '📻',
+victim: 'Édouard-Léon Scott',
+dates: '1857-1877',
+tactics: [
+'Scott invented the phonautograph in 1857 — 20 YEARS before Edison',
+'It recorded sound waves visually but couldn\'t play them back',
+'Edison\'s phonograph could record AND playback',
+'Edison never acknowledged Scott\'s foundational work',
+'Claimed complete invention of sound recording',
+'Scott died in poverty, his work forgotten'
+],
+reality: 'Edison improved on Scott\'s 20-year-old invention but took FULL credit. Scott\'s recordings weren\'t even played back until 2008 when we had the technology to do it.',
+impact: 'History erased 20 years of foundational work',
+lostWorld: [
+'More honest history of how technology actually develops',
+'Recognition that fundamental research ≠ commercial application',
+'Scott might have received funding to develop playback himself',
+'Different attitudes toward intellectual property and credit'
+]
+},
+{
+id: 'xray',
+title: 'X-RAYS / FLUOROSCOPY',
+icon: '☢️',
+victim: 'Wilhelm Röntgen',
+dates: '1895-1896',
+tactics: [
+'German physicist Röntgen discovered X-rays in 1895',
+'Röntgen REFUSED to patent X-rays, wanted them to benefit all humanity',
+'Edison immediately started developing fluoroscope using Röntgen\'s discovery',
+'Claimed credit for the fluoroscope device',
+'Profited massively from Röntgen\'s open-science approach',
+'Edison had NO QUALMS about patenting and profiting'
+],
+reality: 'Röntgen did the fundamental science and gave it away for free to help humanity. Edison built a commercial device and claimed the glory. Two completely different philosophies.',
+impact: 'X-ray development wasn\'t delayed — but shows Edison\'s pattern clearly',
+lostWorld: [
+'What if Edison\'s monopolistic approach HADN\'
